@@ -11,4 +11,13 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile group: 'com.sparkjava', name: 'spark-core', version: '2.2'
+    compile group: 'com.sparkjava', name: 'spark-template-freemarker', version: '2.0.0'
+    compile group: 'org.postgresql', name: 'postgresql', version: '9.4-1201-jdbc4'
+    compile group: 'com.heroku.sdk', name: 'heroku-jdbc', version: '0.1.1'
+    
+}
+
+task stage {
+    dependsOn build
 }
