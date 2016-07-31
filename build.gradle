@@ -1,7 +1,18 @@
 group 'me.kevinyan'
 version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+    }
+}
+
 apply plugin: 'java'
-apply plugin: "application"
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 sourceCompatibility = 1.8
 
@@ -19,7 +30,7 @@ dependencies {
 }
 
 task stage {
-    dependsOn build
+    dependsOn shadowjar
 }
 
 mainClassName= "me.kevinyan.MeleeServer"
