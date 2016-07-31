@@ -30,7 +30,7 @@ dependencies {
 }
 
 task stage {
-    dependsOn shadowjar
+    dependsOn shadowJar
 }
 
 mainClassName= "me.kevinyan.MeleeServer"
