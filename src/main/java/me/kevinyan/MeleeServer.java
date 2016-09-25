@@ -29,13 +29,20 @@ public class MeleeServer {
             return new ModelAndView(attributes, "index.ftl");
         }, new FreeMarkerEngine());
 
-    /*
-    post("/submitplayers", (req, res) -> {
-        List<String> playerNames = req.getPlayers();
-        Bracket br = new Bracket(playerNames);
-        database.save(br);
-        res.send(br.getRounds());
-    }, new FreeMarkerEngine());*/
+    
+    post("/submitPlayers", (req, res) -> {
+        
+        for(String s: req.attributes())
+        {
+            System.out.println(s);
+        }
+        System.out.println(req.body());
+        //List<String> playerNames = req.getPlayers();
+        //Bracket br = new Bracket(playerNames);
+        //database.save(br);
+        res.status(200);
+        return null;
+    });
 
     get("/admin", (req, res) -> {
         Map<String, Object> attributes = new HashMap<>();

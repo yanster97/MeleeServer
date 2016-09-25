@@ -24,10 +24,16 @@ $('#btnName').click(function(){
         $('<li />', {html: text}).appendTo('ul.justList')
     }
 });
+$('#submit').click(function(){
+    var myList = [];
+    $("ul.justList > li").each(function () {
+        myList.push(
+            $(this).text()
+        );
+    });
+    $.post("/submitPlayers", {list: myList}, function (data){alert("got response")}
+});
 </script>
 </body>
-
-
-
 </html>
 
