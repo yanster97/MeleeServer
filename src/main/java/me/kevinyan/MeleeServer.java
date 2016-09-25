@@ -5,13 +5,10 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Map;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 
 import static spark.Spark.*;
 import spark.template.freemarker.FreeMarkerEngine;
 import spark.ModelAndView;
-import static spark.Spark.get;
 
 import com.heroku.sdk.jdbc.DatabaseUrl;
 import static spark.Spark.get;
@@ -31,6 +28,12 @@ public class MeleeServer {
 
             return new ModelAndView(attributes, "index.ftl");
         }, new FreeMarkerEngine());
+
+    get("/admin", (req, res) -> {
+        Map<String, Object> attributes = new HashMap<>();
+        attributes.put("message", "Hello World!");
+        return new ModelAndView(attributes, "admin.ftl");
+    }, new FreeMarkerEngine());
 
     get("/db", (req, res) -> {
       Connection connection = null;
