@@ -1,5 +1,6 @@
 package me.kevinyan.melee;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,8 +17,28 @@ public class Bracket {
        public Bracket(List<Player> players) {
            int numPlayers = players.size();
            int nearestPower = nearestPower2(numPlayers);
-           int numMatchesR1 = numPlayers - nearestPower;
-           int playersR1 = numMatchesR1 * 2;
+           this.rounds = new ArrayList();
+           //adding last round
+           rounds.add(Round.getLastRound());
+           
+           Round prevRound = rounds.get(0);
+           //adding middle rounds
+           while(shouldMakeNewRound(prevRound, nearestPower)){
+               //make round from prev round
+               Round currentRound = Round.fromRound(prevRound);
+               //add round to list
+               rounds.add(currentRound);
+               prevRound = currentRound;
+               
+           }
+           
+           //adding first round
+           rounds.add(Round.getFirstRound(numPlayers, prevRound));
+           
+       }
+       
+       private boolean shouldMakeNewRound(Round prevRound, int nearestPower){
+           return (prevRound.getNumPlayers() * 2) <= nearestPower;
        }
        
        public int nearestPower2(int n) {

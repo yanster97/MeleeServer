@@ -1,4 +1,5 @@
 .idea
+nbproject
 /.nb-gradle/
 .nb-gradle-properties
 /build/
