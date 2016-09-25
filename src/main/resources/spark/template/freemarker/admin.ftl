@@ -11,6 +11,7 @@
     <input type="test" id="inputName" />
     <ul class="justList"></ul>
     <button id="btnName">Add player</button>
+    <button id="submit">Submit Players</button>
     <!--add field to enter player name
     make a button to add players
     display list of players
