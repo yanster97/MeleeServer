@@ -31,8 +31,8 @@ $('#submit').click(function(){
             $(this).text()
         );
     });
-    $.post("/submitPlayers", {list: myList}, function (data){alert("got response")}
-});
+    $.post("/submitPlayers", myList, function (data){alert("got response")})
+};
 </script>
 </body>
 </html>
