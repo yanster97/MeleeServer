@@ -32,7 +32,7 @@ $('#submit').click(function(){
         );
     });
     $.post("/submitPlayers", myList, function (data){alert("got response")})
-};
+});
 </script>
 </body>
 </html>
