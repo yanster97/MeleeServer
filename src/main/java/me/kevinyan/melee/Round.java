@@ -57,4 +57,11 @@ public class Round {
     public int getNumPlayers(){
         return matches.size() * 2;
     }
+
+    public void addPlayersToMatches(List<Player> players, int cutoff) {
+        for(Match m : matches) {
+            m.addPlayers(players, cutoff);
+        }
+    }
+
 }

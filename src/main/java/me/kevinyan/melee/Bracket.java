@@ -1,7 +1,7 @@
 package me.kevinyan.melee;
 
-import com.sun.java.swing.plaf.windows.WindowsTreeUI;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -33,9 +33,14 @@ public class Bracket {
             prevRound = currentRound;
         }
 
-        //adding first round
+        int cutoff = 2 * nearestPower - numPlayers;
+        //number of players - 2 * (number of player - np2 + 1)
         rounds.add(Round.getFirstRound(numPlayers, prevRound));
-        //TODO: add playernames to first round
+        Collections.reverse(rounds);
+        rounds.get(0).addPlayersToMatches(players, numPlayers);
+        if(rounds.size() > 1) {
+            rounds.get(1).addPlayersToMatches(players, cutoff);
+        }
     }
 
     private boolean shouldMakeNewRound(Round prevRound, int nearestPower){

@@ -1,11 +1,16 @@
 package me.kevinyan.melee;
 
+import java.util.List;
+
 /**
  *
  * @author kevin
  */
 public class Match {
+
     public int topBranchID, bottomBranchID;
+    public Player topPlayer, bottomPlayer;
+
     public Match(int branchID, int numPlayers) {
         this.topBranchID = branchID;
         this.bottomBranchID = numPlayers - branchID + 1;
@@ -25,6 +30,14 @@ public class Match {
     public static Match getLastMatch(){
         return new Match(1,2);
     }
-    
-    
+
+    public void addPlayers(List<Player> players, int cutoff) {
+        if(topBranchID <= cutoff) {
+            topPlayer = players.get(topBranchID);
+        }
+        if(bottomBranchID <= cutoff) {
+            bottomPlayer = players.get(bottomBranchID);
+        }
+    }
+
 }

@@ -13,6 +13,7 @@ import spark.ModelAndView;
 import com.heroku.sdk.jdbc.DatabaseUrl;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 import me.kevinyan.melee.Bracket;
 import me.kevinyan.melee.Player;
 import static spark.Spark.get;
@@ -44,6 +45,7 @@ public class MeleeServer {
         Map m = g.fromJson(allPlayersJSON, HashMap.class);
         List<String> players = (List<String>)m.get("players");
         Bracket b = new Bracket(players.stream().map(pn -> new Player(pn)).collect(Collectors.toCollection(ArrayList::new)));
+        //make json representation of matches, send to front end, and display
         return "testret";
     });
 
