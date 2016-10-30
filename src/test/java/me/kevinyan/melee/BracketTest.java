@@ -37,7 +37,7 @@ public class BracketTest {
     public void testBracket() {
         List<Player> players = new ArrayList();
         for(int i = 0; i < 5; i++){
-            players.add(new Player());
+            players.add(new Player("Player" + Integer.toString(i)));
         }
         Bracket testBracket = new Bracket(players);
         assertTrue(testBracket.rounds.size() == 3);
