@@ -33,10 +33,10 @@ public class Match {
 
     public void addPlayers(List<Player> players, int cutoff) {
         if(topBranchID <= cutoff) {
-            topPlayer = players.get(topBranchID);
+            topPlayer = players.get(topBranchID - 1);
         }
         if(bottomBranchID <= cutoff) {
-            bottomPlayer = players.get(bottomBranchID);
+            bottomPlayer = players.get(bottomBranchID - 1);
         }
     }
 

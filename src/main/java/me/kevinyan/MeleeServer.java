@@ -15,7 +15,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import me.kevinyan.melee.Bracket;
+import me.kevinyan.melee.Match;
 import me.kevinyan.melee.Player;
+import me.kevinyan.melee.Round;
 import static spark.Spark.get;
 
 public class MeleeServer {
@@ -42,9 +44,16 @@ public class MeleeServer {
         //database.save(br);
         //res.status(200);
         Gson g = new Gson();
-        Map m = g.fromJson(allPlayersJSON, HashMap.class);
-        List<String> players = (List<String>)m.get("players");
+        Map pmap = g.fromJson(allPlayersJSON, HashMap.class);
+        List<String> players = (List<String>)pmap.get("players");
         Bracket b = new Bracket(players.stream().map(pn -> new Player(pn)).collect(Collectors.toCollection(ArrayList::new)));
+        for(int i = 0; i < b.rounds.size(); i++) {
+            Round r = b.rounds.get(i);
+            for(int j = 0; j < r.matches.size(); j++) {
+                Match m = r.matches.get(j);
+                System.out.println("Round " + i + ", match " + j + ", players:" + (m.topPlayer == null ? null : m.topPlayer.name) + ", " + (m.bottomPlayer == null ? null : m.bottomPlayer.name));
+            }
+        }
         //make json representation of matches, send to front end, and display
         return "testret";
     });
