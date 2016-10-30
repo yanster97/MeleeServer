@@ -31,13 +31,6 @@ public class MeleeServer {
 
     
     post("/submitPlayers", (req, res) -> {
-        for(String s: req.attributes())
-        {
-            System.out.println(s);
-        }
-        for(String s : req.params().keySet()) {
-            System.out.println("Found param key:" + s);
-        }
         String allPlayersJSON = req.body();
         //List<String> playerNames = req.getPlayers();
         //Bracket br = new Bracket(playerNames);
