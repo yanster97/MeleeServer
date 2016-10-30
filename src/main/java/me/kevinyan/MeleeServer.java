@@ -37,6 +37,7 @@ public class MeleeServer {
             System.out.println(s);
         }
         System.out.println(req.body());
+        System.out.println("req body sent");
         //List<String> playerNames = req.getPlayers();
         //Bracket br = new Bracket(playerNames);
         //database.save(br);
