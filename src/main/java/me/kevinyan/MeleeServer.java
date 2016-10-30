@@ -1,7 +1,7 @@
 package me.kevinyan;
 
+import com.google.gson.Gson;
 import java.sql.*;
-import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -11,6 +11,10 @@ import spark.template.freemarker.FreeMarkerEngine;
 import spark.ModelAndView;
 
 import com.heroku.sdk.jdbc.DatabaseUrl;
+import java.util.HashMap;
+import java.util.List;
+import me.kevinyan.melee.Bracket;
+import me.kevinyan.melee.Player;
 import static spark.Spark.get;
 
 public class MeleeServer {
@@ -36,6 +40,10 @@ public class MeleeServer {
         //Bracket br = new Bracket(playerNames);
         //database.save(br);
         //res.status(200);
+        Gson g = new Gson();
+        Map m = g.fromJson(allPlayersJSON, HashMap.class);
+        List<String> players = (List<String>)m.get("players");
+        Bracket b = new Bracket(players.stream().map(pn -> new Player(pn)).collect(Collectors.toCollection(ArrayList::new)));
         return "testret";
     });
 

@@ -33,7 +33,7 @@ public class Round {
         lastMatch.add(Match.getLastMatch());
         return new Round(lastMatch);
     }
-    
+
     public static Round getFirstRound(int numPlayers, Round secondRound){
         List<Match> firstMatch = new ArrayList();
         int leftOver = numPlayers - secondRound.getNumPlayers();
@@ -53,12 +53,8 @@ public class Round {
         Round firstRound = new Round(firstMatch);
         return firstRound;
     }
-    
+
     public int getNumPlayers(){
         return matches.size() * 2;
     }
-            
 }
-    
-    
-
