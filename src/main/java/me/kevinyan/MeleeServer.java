@@ -17,7 +17,7 @@ public class MeleeServer {
 
   public static void main(String[] args) {
 
-    port(Integer.valueOf(System.getenv("PORT")));
+    port(50000);
     staticFileLocation("/public");
 
     get("/hello", (req, res) -> "Hello World");
@@ -31,17 +31,19 @@ public class MeleeServer {
 
     
     post("/submitPlayers", (req, res) -> {
-        
         for(String s: req.attributes())
         {
             System.out.println(s);
         }
-        System.out.println(req.body());
+        for(String s : req.params().keySet()) {
+            System.out.println("Found param key:" + s);
+        }
+        String allPlayersJSON = req.body();
         //List<String> playerNames = req.getPlayers();
         //Bracket br = new Bracket(playerNames);
         //database.save(br);
-        res.status(200);
-        return null;
+        //res.status(200);
+        return "testret";
     });
 
     get("/admin", (req, res) -> {
